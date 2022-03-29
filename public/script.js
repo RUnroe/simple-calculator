@@ -22,25 +22,7 @@ const toggleSign = () => {
 }
 
 const getTotal = () => {
-    let firstValue = parseFloat(firstNum, 10);
-    let secondValue = parseFloat(secondNum, 10);
-    switch(currOperation) {
-        case "add":
-            firstNum = firstValue + secondValue;
-        break;
-        case "subtract":
-            firstNum = firstValue - secondValue;
-        break;
-        case "multiply":
-            firstNum = firstValue * secondValue;
-        break;
-        case "divide":
-            firstNum = firstValue / secondValue;
-        break;
-        case "mod":
-            firstNum = firstValue % secondValue;
-        break;
-    }
+    firstNum = calculate(firstNum, secondNum, currOperation);
     focusedOnFirstNum = true;
     secondNum = "0";
     display();
@@ -64,6 +46,7 @@ const addToNumString = (value) => {
     display();
 }
 
+//Renders new text on the output element
 const display = () => {
     let value = firstNum;
     if(!focusedOnFirstNum) value = secondNum;
@@ -71,6 +54,53 @@ const display = () => {
 
 }
 
+const sanitizeInput = (input) => {
+    return parseFloat(input, 10);
+}
+
+
+
+////////////////////////////////////
+//Methods to Unit Test
+
+const add = (num1, num2) => {
+    return sanitizeInput(num1) + sanitizeInput(num2);
+}
+
+const subtract = (num1, num2) => {
+    return sanitizeInput(num1) - sanitizeInput(num2);
+}
+
+const multiply = (num1, num2) => {
+    return sanitizeInput(num1) * sanitizeInput(num2);
+}
+
+const divide = (num1, num2) => {
+    if(num2 === 0) return 0;
+    return sanitizeInput(num1) / sanitizeInput(num2);
+}
+
+
+const calculate = (firstValue, secondValue, operationString) => {
+    operationString = operationString.toLowerCase();
+    if(!/(add|subtract|multiply|divide)/.test(operationString)) {
+        throw "Operation not recognized";
+    }
+    else {
+        switch(operationString) {
+            case "add":
+                return add(firstValue, secondValue);
+            case "subtract":
+                return subtract(firstValue, secondValue);
+            case "multiply":
+                return multiply(firstValue, secondValue);
+            case "divide":
+                return divide(firstValue, secondValue);
+        }
+    }
+}
+
+///////////////////////////////////
 
 
 
@@ -84,7 +114,6 @@ document.getElementById("multiply").addEventListener("click", () => {operation("
 document.getElementById("divide").addEventListener("click", () => {operation("divide");});
 document.getElementById("add").addEventListener("click", () => {operation("add");});
 document.getElementById("subtract").addEventListener("click", () => {operation("subtract");});
-document.getElementById("mod").addEventListener("click", () => {operation("mod");});
 
 document.getElementById("decimal").addEventListener("click", () => {addToNumString(".")});
 for(let i = 0; i < 10; i++) {
