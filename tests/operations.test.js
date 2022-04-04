@@ -121,3 +121,30 @@ test('12 / 2 = 6', () => {
 test('5 / 2 = 2.5', () => {
     expect(divide(5, 2)).toBe(2.5);
 });
+
+
+
+/*/////////////////
+    Calculate
+/////////////////*/
+
+//Addition
+test('1 + 2 = 3', () => {
+    expect(calculate(1, 2, "add")).toBe(3);
+});
+
+
+//Subtraction
+test('5 - 2 = 3', () => {
+    expect(calculate(5, 2, "subtract")).toBe(3);
+});
+
+//Multiplication 
+test('5 * 2 = 10', () => {
+    expect(calculate(5, 2, "multiply")).toBe(10);
+});
+
+//Division
+test('6 / 2 = 3', () => {
+    expect(calculate(6, 2, "divide")).toBe(3);
+});
