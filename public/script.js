@@ -74,5 +74,5 @@ document.getElementById("subtract").addEventListener("click", () => {operation("
 
 document.getElementById("decimal").addEventListener("click", () => {addToNumString(".")});
 for(let i = 0; i < 10; i++) {
-    document.getElementById(i).addEventListener("click", () => {addToNumString(i)});
+    document.getElementById(`b${i}`).addEventListener("click", () => {addToNumString(i)});
 }
