@@ -8,7 +8,12 @@ const  evaluate = async (page, expected) => {
     else testsPassed++;
 }
 
-
+/*
+    Puppeteer End to End Testing
+    In one session, puppeteer loads the calculator and tests 5 different math problems,
+    clearing the calculator in-between each. It keeps track of how many problems it got 
+    right out of the 5 its testing.
+*/
 
 (async () => {
     const browser = await puppeteer.launch({slowMo: 80, headless: false});

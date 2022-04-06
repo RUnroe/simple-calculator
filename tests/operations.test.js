@@ -1,5 +1,11 @@
 const {add, subtract, divide, multiply, calculate} = require('../public/operations');
 
+/*
+    Jest testing. Multiple tests per operation.
+*/
+
+
+
 /*/////////////////
     Addition
 /////////////////*/
@@ -128,23 +134,27 @@ test('5 / 2 = 2.5', () => {
     Calculate
 /////////////////*/
 
-//Addition
+//Testing Addition through the calculate method
+//Expecting 1 + 2 to equal 3
 test('1 + 2 = 3', () => {
     expect(calculate(1, 2, "add")).toBe(3);
 });
 
 
-//Subtraction
+//Testing Subtraction through the calculate method
+//Expecting 5 - 2 to equal 3
 test('5 - 2 = 3', () => {
     expect(calculate(5, 2, "subtract")).toBe(3);
 });
 
-//Multiplication 
+//Testing Multiplication through the calculate method
+//Expecting 5 * 2 to equal 10
 test('5 * 2 = 10', () => {
     expect(calculate(5, 2, "multiply")).toBe(10);
 });
 
-//Division
+//Testing Division through the calculate method
+//Expecting 6 / 2 to equal 3
 test('6 / 2 = 3', () => {
     expect(calculate(6, 2, "divide")).toBe(3);
 });
